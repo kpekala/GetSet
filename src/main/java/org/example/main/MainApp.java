@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.example.data.PreferencesService;
+import org.example.login.LoginView;
 
 import java.io.IOException;
 
@@ -19,6 +20,9 @@ public class MainApp extends Application {
     private Scene mainScene = null;
     private Stage primaryStage = null;
 
+    private LoginView loginView;
+    private MainView mainView;
+
     private static MainApp instance;
 
     private final PreferencesService preferences = new PreferencesService();
@@ -28,10 +32,9 @@ public class MainApp extends Application {
         instance = this;
         primaryStage = stage;
         prepareScenes();
-
         if (!preferences.getUserHash().isEmpty()){
             System.out.println(preferences.getUserHash());
-            updateScene(mainScene);
+            startMainScene();
         }else{
             updateScene(loginScene);
         }
@@ -47,8 +50,12 @@ public class MainApp extends Application {
 
     private void prepareScenes() {
         try {
-            loginScene = loadScene("/login.fxml");
-            mainScene = loadScene("/scene.fxml");
+            FXMLLoader loader = new FXMLLoader();
+            loginScene = loadScene("/login.fxml", loader);
+            loginView = loader.getController();
+            loader = new FXMLLoader();
+            mainScene = loadScene("/scene.fxml",loader);
+            mainView = loader.getController();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,11 +68,11 @@ public class MainApp extends Application {
 
     public void startMainScene(){
         updateScene(mainScene);
+        mainView.onStart();
     }
 
 
-    private Scene loadScene(String fileName) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+    private Scene loadScene(String fileName, FXMLLoader loader) throws IOException {
         loader.setLocation(getClass().getResource(fileName));
         Parent content = loader.load();
 
