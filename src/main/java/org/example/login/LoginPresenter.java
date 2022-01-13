@@ -4,12 +4,12 @@ import javafx.application.Platform;
 import org.example.data.PreferencesService;
 import org.example.data.RetrofitWepApi;
 
-import java.util.prefs.Preferences;
-
 public class LoginPresenter implements LoginCallback {
     private LoginView view;
     private RetrofitWepApi wepApi;
     private final PreferencesService preferences = new PreferencesService();
+
+    private String userName;
 
     public LoginPresenter(LoginView view) {
         this.view = view;
@@ -17,6 +17,7 @@ public class LoginPresenter implements LoginCallback {
     }
 
     public void login(String name, String password){
+        this.userName = name;
         wepApi.login(name,password,this);
     }
 
@@ -25,6 +26,7 @@ public class LoginPresenter implements LoginCallback {
         //runLater() is needed to go back to ui thread
         Platform.runLater(() ->{
             preferences.updateUserHash(hash);
+            preferences.updateUserName(this.userName);
             view.openMainStage();
         });
     }

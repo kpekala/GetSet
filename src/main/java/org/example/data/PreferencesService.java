@@ -12,4 +12,12 @@ public class PreferencesService {
     public String getUserHash(){
         return preferences.get("hash","");
     }
+
+    public void updateUserName(String name) {
+        preferences.put("userName",name);
+    }
+
+    public String getUserName() {
+        return preferences.get("userName","");
+    }
 }

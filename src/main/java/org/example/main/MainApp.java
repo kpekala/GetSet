@@ -6,13 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import org.example.data.PreferencesService;
 import org.example.login.LoginView;
 
 import java.io.IOException;
-
-import static javafx.application.Application.launch;
 
 public class MainApp extends Application {
 
@@ -43,8 +40,7 @@ public class MainApp extends Application {
 
     private void initHandlers() {
         primaryStage.setOnCloseRequest(event -> {
-            Platform.exit();
-            System.exit(0);
+            quit();
         });
     }
 
@@ -84,5 +80,15 @@ public class MainApp extends Application {
     }
     public static MainApp getInstance(){
         return instance;
+    }
+
+    public void quit() {
+        Platform.exit();
+        System.exit(0);
+    }
+
+    public void startLoginScene() {
+        updateScene(loginScene);
+        loginView.onStart();
     }
 }

@@ -1,16 +1,15 @@
 package org.example.main;
 
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class MainView{
     public TextField fieldSetCode = null;
     public Button buttonLoadSet = null;
     public ProgressIndicator indicatorLoadingSet = null;
+    public MenuItem buttonQuit;
 
     private MainPresenter mainPresenter = new MainPresenter(this);
 
@@ -23,11 +22,20 @@ public class MainView{
         mainPresenter.onStart();
     }
 
-    public void showWelcomeDialog(String hash){
+    public void showWelcomeDialog(String hash, String name){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Witamy!");
-        alert.setContentText("Twój hash to " + hash + ".");
+        alert.setTitle("Welcome!");
+        alert.setHeaderText("You are logged as " + name);
+        alert.setContentText("Your hash is " + hash + ".");
         alert.show();
+    }
 
+
+    public void onButtonQuitClicked(ActionEvent event) {
+        mainPresenter.onQuitClicked();
+    }
+
+    public void onButtonLogoutClick(ActionEvent event) {
+        mainPresenter.onLogoutClicked();
     }
 }

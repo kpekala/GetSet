@@ -15,6 +15,17 @@ public class MainPresenter {
 
     public void onStart(){
         String hash = preferences.getUserHash();
-        view.showWelcomeDialog(hash);
+        String name = preferences.getUserName();
+        view.showWelcomeDialog(hash, name);
+    }
+
+    public void onQuitClicked() {
+        MainApp.getInstance().quit();
+    }
+
+    public void onLogoutClicked() {
+        preferences.updateUserHash("");
+        preferences.updateUserName("");
+        MainApp.getInstance().startLoginScene();
     }
 }

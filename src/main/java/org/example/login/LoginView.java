@@ -33,4 +33,9 @@ public class LoginView {
     public void openMainStage() {
         MainApp.getInstance().startMainScene();
     }
+
+    public void onStart() {
+        fieldName.clear();
+        fieldPassword.clear();
+    }
 }
