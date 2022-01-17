@@ -4,18 +4,20 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 
 public class MainView{
-    public TextField fieldSetCode = null;
-    public Button buttonLoadSet = null;
-    public ProgressIndicator indicatorLoadingSet = null;
+    public TextField fieldSetCode;
+    public Button buttonLoadSet;
+    public ProgressIndicator indicatorLoadingSet;
     public MenuItem buttonQuit;
+    public Text textSetData;
 
     private MainPresenter mainPresenter = new MainPresenter(this);
 
     @FXML
     public void onButtonLoadSetClicked(Event e){
-        indicatorLoadingSet.setVisible(true);
+        mainPresenter.onFetchSetClicked(fieldSetCode.getText().trim());
     }
 
     public void onStart(){
@@ -29,7 +31,9 @@ public class MainView{
         alert.setContentText("Your hash is " + hash + ".");
         alert.show();
     }
-
+    public void showSetData(String data){
+        textSetData.setText(data);
+    }
 
     public void onButtonQuitClicked(ActionEvent event) {
         mainPresenter.onQuitClicked();
@@ -37,5 +41,12 @@ public class MainView{
 
     public void onButtonLogoutClick(ActionEvent event) {
         mainPresenter.onLogoutClicked();
+    }
+
+    public void showLoading(){
+        indicatorLoadingSet.setVisible(true);
+    }
+    public void hideLoading(){
+        indicatorLoadingSet.setVisible(false);
     }
 }

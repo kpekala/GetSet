@@ -2,18 +2,18 @@ package org.example.login;
 
 import javafx.application.Platform;
 import org.example.data.PreferencesService;
-import org.example.data.RetrofitWepApi;
+import org.example.data.RetrofitWebApi;
 
 public class LoginPresenter implements LoginCallback {
     private LoginView view;
-    private RetrofitWepApi wepApi;
+    private RetrofitWebApi wepApi;
     private final PreferencesService preferences = new PreferencesService();
 
     private String userName;
 
     public LoginPresenter(LoginView view) {
         this.view = view;
-        wepApi = new RetrofitWepApi();
+        wepApi = new RetrofitWebApi();
     }
 
     public void login(String name, String password){
@@ -22,7 +22,7 @@ public class LoginPresenter implements LoginCallback {
     }
 
     @Override
-    public void loginSuccessful(String hash) {
+    public void onLoginSuccessful(String hash) {
         //runLater() is needed to go back to ui thread
         Platform.runLater(() ->{
             preferences.updateUserHash(hash);
@@ -32,7 +32,7 @@ public class LoginPresenter implements LoginCallback {
     }
 
     @Override
-    public void loginFailed(String message) {
+    public void onLoginFailed(String message) {
         //runLater() is needed to go back to ui thread
         Platform.runLater(() -> view.showLoginFail());
     }
