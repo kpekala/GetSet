@@ -10,7 +10,6 @@ public class MainView{
     public TextField fieldSetCode;
     public Button buttonLoadSet;
     public ProgressIndicator indicatorLoadingSet;
-    public MenuItem buttonQuit;
     public Text textSetData;
 
     private MainPresenter mainPresenter = new MainPresenter(this);
@@ -45,8 +44,10 @@ public class MainView{
 
     public void showLoading(){
         indicatorLoadingSet.setVisible(true);
+        buttonLoadSet.setDisable(true);
     }
     public void hideLoading(){
         indicatorLoadingSet.setVisible(false);
+        buttonLoadSet.setDisable(false);
     }
 }
