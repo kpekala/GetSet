@@ -11,7 +11,7 @@ public class ModelConverter {
         String theme = Objects.requireNonNull((String) rawData.get("theme"));
         int year = ((Double)rawData.get("year")).intValue();
         int pieceCount = ((Double)rawData.get("pieces")).intValue();
-        String imageLink = "";
+        String imageLink = Objects.requireNonNull((String) ((Map<String, Object>)rawData.get("image")).get("imageURL"));
         return new SetModel(name,pieceCount,theme,year,imageLink);
     }
 }

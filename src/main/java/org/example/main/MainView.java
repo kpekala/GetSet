@@ -4,9 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import org.example.data.model.SetModel;
+
+import java.io.InputStream;
 
 public class MainView{
     public TextField fieldSetCode;
@@ -58,5 +61,10 @@ public class MainView{
         textPieceCount.setText("Pieces: " + setModel.getPieceCount());
         textTheme.setText("Theme: " + setModel.getTheme());
         textYear.setText("Year: " + setModel.getYear());
+        System.out.println(setModel.getImageLink());
+    }
+
+    public void showSetImage(InputStream imageByteStream) {
+        imageSet.setImage(new Image(imageByteStream));
     }
 }

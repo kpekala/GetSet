@@ -1,13 +1,15 @@
 package org.example.main;
 
+import org.example.data.FetchImageCallback;
 import org.example.data.FetchSetCallback;
 import org.example.data.PreferencesService;
 import org.example.data.RetrofitWebApi;
 import org.example.data.model.SetModel;
 
+import java.io.InputStream;
 import java.util.Map;
 
-public class MainPresenter implements FetchSetCallback {
+public class MainPresenter implements FetchSetCallback, FetchImageCallback {
     private MainView view;
     private RetrofitWebApi webApi;
     private final PreferencesService preferences = new PreferencesService();
@@ -43,6 +45,10 @@ public class MainPresenter implements FetchSetCallback {
     public void onFetchSuccessful(SetModel setModel) {
         view.showSetTextData(setModel);
         view.hideLoading();
+
+        //Now we are focusing on loading an image of set
+        webApi.fetchImageSet(setModel.getImageLink(),this);
+
     }
 
     @Override
@@ -51,4 +57,13 @@ public class MainPresenter implements FetchSetCallback {
     }
 
 
+    @Override
+    public void onFetchImageSuccessful(InputStream imageByteStream) {
+        view.showSetImage(imageByteStream);
+    }
+
+    @Override
+    public void onFetchImageFailed() {
+
+    }
 }

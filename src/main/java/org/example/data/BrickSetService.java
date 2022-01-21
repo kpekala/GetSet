@@ -1,5 +1,6 @@
 package org.example.data;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -24,4 +25,7 @@ public interface BrickSetService {
     Call<Map<String,Object>> fetchSet1(@Query("apiKey") String apiKey,
                                       @Query("userHash") String userHash,
                                       @Query("params") String params);
+
+    @GET
+    Call<ResponseBody> fetchImage(@Url String imageUrl);
 }

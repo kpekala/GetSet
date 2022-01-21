@@ -1,5 +1,6 @@
 package org.example.data;
 
+import okhttp3.ResponseBody;
 import org.example.data.model.SetModel;
 import org.example.login.LoginCallback;
 import retrofit2.Call;
@@ -8,6 +9,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,5 +74,29 @@ public class RetrofitWebApi {
                 callback.onFetchError("error");
             }
         });
+    }
+
+    public void fetchImageSet(String url, FetchImageCallback callback){
+         brickSetService.fetchImage(url).enqueue(new Callback<>() {
+             @Override
+             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                 if (response.isSuccessful()) {
+                     if (response.body() != null) {
+                         // display the image data in a ImageView or save it
+                         InputStream imageInputStream = response.body().byteStream();
+                         callback.onFetchImageSuccessful(imageInputStream);
+                     } else {
+                         callback.onFetchImageFailed();
+                     }
+                 } else {
+                     callback.onFetchImageFailed();
+                 }
+             }
+
+             @Override
+             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                 callback.onFetchImageFailed();
+             }
+         });
     }
 }
