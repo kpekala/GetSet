@@ -1,5 +1,6 @@
 package org.example.data;
 
+import org.example.data.model.SetModel;
 import org.example.login.LoginCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,11 +52,18 @@ public class RetrofitWebApi {
                 if(data == null)
                     callback.onFetchError("data is null");
                 try{
-                    List<Map<String, Object>> sets = (List<Map<String, Object>>) data.get("sets");
-                    String setName = (String) sets.get(0).get("name");
-                    callback.onFetchSuccessful(setName);
-                }catch (Exception exception){
-                    callback.onFetchError("data is broken");
+                    Map<String, Object> setData = ((List<Map<String, Object>>) data.get("sets")).get(0);
+                    System.out.println("siema");
+                    SetModel setModel = ModelConverter.convertMap(setData);
+                    callback.onFetchSuccessful(setModel);
+                } catch (NullPointerException exception){
+                    callback.onFetchError("Something is no yes");
+                }catch (ClassCastException exception) {
+                    callback.onFetchError("Class cast  exception");
+                    exception.printStackTrace();
+                }
+                catch (Exception exception){
+                    callback.onFetchError("Exception");
                 }
             }
 

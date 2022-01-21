@@ -22,8 +22,6 @@ public class LoginView {
     }
 
     public void initialize(){
-        System.out.println("asdasdasd");
-        //loginPresenter.onStart();
     }
 
     public void showLoginFail() {

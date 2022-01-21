@@ -3,6 +3,7 @@ package org.example.main;
 import org.example.data.FetchSetCallback;
 import org.example.data.PreferencesService;
 import org.example.data.RetrofitWebApi;
+import org.example.data.model.SetModel;
 
 import java.util.Map;
 
@@ -39,14 +40,13 @@ public class MainPresenter implements FetchSetCallback {
     }
 
     @Override
-    public void onFetchSuccessful(String name) {
-        view.showSetData(name);
+    public void onFetchSuccessful(SetModel setModel) {
+        view.showSetTextData(setModel);
         view.hideLoading();
     }
 
     @Override
     public void onFetchError(String message) {
-        view.showSetData(message);
         view.hideLoading();
     }
 

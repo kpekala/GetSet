@@ -4,13 +4,19 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import org.example.data.model.SetModel;
 
 public class MainView{
     public TextField fieldSetCode;
     public Button buttonLoadSet;
     public ProgressIndicator indicatorLoadingSet;
-    public Text textSetData;
+    public Text textName;
+    public Text textTheme;
+    public Text textYear;
+    public Text textPieceCount;
+    public ImageView imageSet;
 
     private MainPresenter mainPresenter = new MainPresenter(this);
 
@@ -30,10 +36,6 @@ public class MainView{
         alert.setContentText("Your hash is " + hash + ".");
         alert.show();
     }
-    public void showSetData(String data){
-        textSetData.setText(data);
-    }
-
     public void onButtonQuitClicked(ActionEvent event) {
         mainPresenter.onQuitClicked();
     }
@@ -49,5 +51,12 @@ public class MainView{
     public void hideLoading(){
         indicatorLoadingSet.setVisible(false);
         buttonLoadSet.setDisable(false);
+    }
+
+    public void showSetTextData(SetModel setModel) {
+        textName.setText("Name: " + setModel.getName());
+        textPieceCount.setText("Pieces: " + setModel.getPieceCount());
+        textTheme.setText("Theme: " + setModel.getTheme());
+        textYear.setText("Year: " + setModel.getYear());
     }
 }
