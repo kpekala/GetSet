@@ -7,6 +7,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import org.example.data.PreferencesService;
+import org.example.data.RetrofitWebApi;
 import org.example.data.model.SetModel;
 
 import java.io.InputStream;
@@ -21,7 +23,7 @@ public class MainView{
     public Text textPieceCount;
     public ImageView imageSet;
 
-    private final MainPresenter mainPresenter = new MainPresenter(this);
+    private final MainPresenter mainPresenter = new MainPresenter(this, new RetrofitWebApi(), new PreferencesService());
 
     @FXML
     public void onButtonLoadSetClicked(Event e){

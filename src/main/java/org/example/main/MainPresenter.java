@@ -9,15 +9,16 @@ import org.example.data.model.SetModel;
 import java.io.InputStream;
 
 public class MainPresenter implements FetchSetCallback, FetchImageCallback {
-    private MainView view;
-    private RetrofitWebApi webApi;
-    private final PreferencesService preferences = new PreferencesService();
+    private final MainView view;
+    private final RetrofitWebApi webApi;
+    private final PreferencesService preferences;
 
     private String hash;
 
-    public MainPresenter(MainView view) {
+    public MainPresenter(MainView view, RetrofitWebApi webApi, PreferencesService preferences) {
         this.view = view;
-        webApi = new RetrofitWebApi();
+        this.webApi = webApi;
+        this.preferences = preferences;
     }
 
     public void onStart(){

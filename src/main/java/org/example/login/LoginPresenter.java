@@ -5,15 +5,16 @@ import org.example.data.PreferencesService;
 import org.example.data.RetrofitWebApi;
 
 public class LoginPresenter implements LoginCallback {
-    private LoginView view;
-    private RetrofitWebApi wepApi;
-    private final PreferencesService preferences = new PreferencesService();
+    private final LoginView view;
+    private final RetrofitWebApi wepApi;
+    private final PreferencesService preferences;
 
     private String userName;
 
-    public LoginPresenter(LoginView view) {
+    public LoginPresenter(LoginView view, RetrofitWebApi wepApi, PreferencesService preferences) {
         this.view = view;
-        wepApi = new RetrofitWebApi();
+        this.wepApi = wepApi;
+        this.preferences = preferences;
     }
 
     public void login(String name, String password){
