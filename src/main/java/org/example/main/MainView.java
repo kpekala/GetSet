@@ -21,7 +21,7 @@ public class MainView{
     public Text textPieceCount;
     public ImageView imageSet;
 
-    private MainPresenter mainPresenter = new MainPresenter(this);
+    private final MainPresenter mainPresenter = new MainPresenter(this);
 
     @FXML
     public void onButtonLoadSetClicked(Event e){

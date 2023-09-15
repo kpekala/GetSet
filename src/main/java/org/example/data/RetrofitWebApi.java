@@ -9,14 +9,15 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 public class RetrofitWebApi {
     final String BASE_URL = "https://brickset.com/api/v3.asmx/";
-    final String API_KEY = "3-Hm1r-1oyZ-oFVzp";
+    private String apiKey;
     private final BrickSetService brickSetService;
     public RetrofitWebApi(){
         Retrofit retrofit = new Retrofit.Builder()
@@ -25,10 +26,25 @@ public class RetrofitWebApi {
                 .build();
 
         brickSetService = retrofit.create(BrickSetService.class);
+
+        loadApiKey();
+    }
+
+    private void loadApiKey() {
+        String resourceName = "app.properties";
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        Properties props = new Properties();
+        try(InputStream resourceStream = loader.getResourceAsStream(resourceName)) {
+            props.load(resourceStream);
+            apiKey = props.getProperty("apikey");
+            System.out.println(apiKey);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void login(String name, String password, LoginCallback callback){
-        brickSetService.login(API_KEY,name,password).enqueue(new Callback<>() {
+        brickSetService.login(apiKey,name,password).enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<Map<String, String>> call, Response<Map<String, String>> response) {
                 if (response.body() != null && response.body().get("hash") != null) {
@@ -46,7 +62,7 @@ public class RetrofitWebApi {
     }
     public void fetchSetData(String setId, String userHash, FetchSetCallback callback){
         String params = "{'setNumber': '" + setId + "-1'}";
-        brickSetService.fetchSet1(API_KEY,userHash,params).enqueue(new Callback<>() {
+        brickSetService.fetchSet1(apiKey,userHash,params).enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<Map<String, Object>> call, Response<Map<String, Object>> response) {
                 System.out.println("fetchSetData: onResponse");
