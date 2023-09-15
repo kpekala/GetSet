@@ -7,7 +7,6 @@ import org.example.data.RetrofitWebApi;
 import org.example.data.model.SetModel;
 
 import java.io.InputStream;
-import java.util.Map;
 
 public class MainPresenter implements FetchSetCallback, FetchImageCallback {
     private MainView view;
@@ -47,7 +46,7 @@ public class MainPresenter implements FetchSetCallback, FetchImageCallback {
         view.hideLoading();
 
         //Now we are focusing on loading an image of set
-        webApi.fetchImageSet(setModel.getImageLink(),this);
+        webApi.fetchImageSet(setModel.imageLink(),this);
 
     }
 

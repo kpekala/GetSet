@@ -4,7 +4,7 @@ import java.util.prefs.Preferences;
 
 public class PreferencesService {
 
-    private Preferences preferences = Preferences.userRoot();
+    private final Preferences preferences = Preferences.userRoot();
 
     public void updateUserHash(String hash){
         preferences.put("hash",hash);

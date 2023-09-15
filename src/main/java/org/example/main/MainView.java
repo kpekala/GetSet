@@ -57,11 +57,11 @@ public class MainView{
     }
 
     public void showSetTextData(SetModel setModel) {
-        textName.setText("Name: " + setModel.getName());
-        textPieceCount.setText("Pieces: " + setModel.getPieceCount());
-        textTheme.setText("Theme: " + setModel.getTheme());
-        textYear.setText("Year: " + setModel.getYear());
-        System.out.println(setModel.getImageLink());
+        textName.setText("Name: " + setModel.name());
+        textPieceCount.setText("Pieces: " + setModel.pieceCount());
+        textTheme.setText("Theme: " + setModel.theme());
+        textYear.setText("Year: " + setModel.year());
+        System.out.println(setModel.imageLink());
     }
 
     public void showSetImage(InputStream imageByteStream) {
