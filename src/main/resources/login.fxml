@@ -32,20 +32,11 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.ProgressIndicator?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.login.LoginView">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.login.LoginView">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -81,21 +72,21 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+            <MenuItem mnemonicParsing="false" text="About GetSet" />
           </items>
         </Menu>
       </menus>
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <TextField fx:id="fieldName" layoutX="230.0" layoutY="103.0" promptText="Nick..." />
-            <PasswordField fx:id="fieldPassword" layoutX="230.0" layoutY="142.0" promptText="Hasło..." />
-            <Text layoutX="234.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logowanie" textAlignment="CENTER">
+            <TextField fx:id="fieldName" layoutX="246.0" layoutY="106.0" promptText="Nick..." />
+            <PasswordField fx:id="fieldPassword" layoutX="246.0" layoutY="144.0" promptText="Password..." />
+            <Text layoutX="285.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER">
                <font>
                   <Font size="29.0" />
                </font>
             </Text>
-            <Button fx:id="buttonLoad" layoutX="278.0" layoutY="221.0" mnemonicParsing="false" onMouseClicked="#onLoginButtonClicked" text="Button" />
+            <Button fx:id="buttonLoad" layoutX="297.0" layoutY="215.0" mnemonicParsing="false" onMouseClicked="#onLoginButtonClicked" text="Login" />
             <ProgressIndicator fx:id="indicatorLogin" layoutX="353.0" layoutY="221.0" prefHeight="25.0" prefWidth="52.0" visible="false" />
       </children>
     </AnchorPane>
