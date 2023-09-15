@@ -19,7 +19,8 @@ public class RetrofitWebApi {
     final String BASE_URL = "https://brickset.com/api/v3.asmx/";
     private String apiKey;
     private final BrickSetService brickSetService;
-    public RetrofitWebApi(){
+
+    public RetrofitWebApi() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -34,7 +35,7 @@ public class RetrofitWebApi {
         String resourceName = "app.properties";
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         Properties props = new Properties();
-        try(InputStream resourceStream = loader.getResourceAsStream(resourceName)) {
+        try (InputStream resourceStream = loader.getResourceAsStream(resourceName)) {
             props.load(resourceStream);
             apiKey = props.getProperty("apikey");
             System.out.println(apiKey);
@@ -43,8 +44,8 @@ public class RetrofitWebApi {
         }
     }
 
-    public void login(String name, String password, LoginCallback callback){
-        brickSetService.login(apiKey,name,password).enqueue(new Callback<>() {
+    public void login(String name, String password, LoginCallback callback) {
+        brickSetService.login(apiKey, name, password).enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<Map<String, String>> call, Response<Map<String, String>> response) {
                 if (response.body() != null && response.body().get("hash") != null) {
@@ -60,28 +61,23 @@ public class RetrofitWebApi {
             }
         });
     }
-    public void fetchSetData(String setId, String userHash, FetchSetCallback callback){
+
+    public void fetchSetData(String setId, String userHash, FetchSetCallback callback) {
         String params = "{'setNumber': '" + setId + "-1'}";
-        brickSetService.fetchSet1(apiKey,userHash,params).enqueue(new Callback<>() {
+        brickSetService.fetchSet1(apiKey, userHash, params).enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<Map<String, Object>> call, Response<Map<String, Object>> response) {
-                System.out.println("fetchSetData: onResponse");
-                var data = response.body();
-                if(data == null)
+                Map<String, Object> data = response.body();
+                if (data == null) {
                     callback.onFetchError("data is null");
-                try{
+                    return;
+                }
+                try {
                     Map<String, Object> setData = ((List<Map<String, Object>>) data.get("sets")).get(0);
-                    System.out.println("siema");
                     SetModel setModel = ModelConverter.convertMap(setData);
                     callback.onFetchSuccessful(setModel);
-                } catch (NullPointerException exception){
-                    callback.onFetchError("Something is no yes");
-                }catch (ClassCastException exception) {
-                    callback.onFetchError("Class cast  exception");
-                    exception.printStackTrace();
-                }
-                catch (Exception exception){
-                    callback.onFetchError("Exception");
+                } catch (Exception exception) {
+                    callback.onFetchError(exception.getMessage());
                 }
             }
 
@@ -92,27 +88,21 @@ public class RetrofitWebApi {
         });
     }
 
-    public void fetchImageSet(String url, FetchImageCallback callback){
-         brickSetService.fetchImage(url).enqueue(new Callback<>() {
-             @Override
-             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                 if (response.isSuccessful()) {
-                     if (response.body() != null) {
-                         // display the image data in a ImageView or save it
-                         InputStream imageInputStream = response.body().byteStream();
-                         callback.onFetchImageSuccessful(imageInputStream);
-                     } else {
-                         callback.onFetchImageFailed();
-                     }
-                 } else {
-                     callback.onFetchImageFailed();
-                 }
-             }
-
-             @Override
-             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                 callback.onFetchImageFailed();
-             }
-         });
+    public void fetchImageSet(String url, FetchImageCallback callback) {
+        brickSetService.fetchImage(url).enqueue(new Callback<>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    InputStream imageInputStream = response.body().byteStream();
+                    callback.onFetchImageSuccessful(imageInputStream);
+                } else {
+                    callback.onFetchImageFailed();
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callback.onFetchImageFailed();
+            }
+        });
     }
 }
