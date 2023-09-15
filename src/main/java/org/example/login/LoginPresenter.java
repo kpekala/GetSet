@@ -35,6 +35,6 @@ public class LoginPresenter implements LoginCallback {
     @Override
     public void onLoginFailed(String message) {
         //runLater() is needed to go back to ui thread
-        Platform.runLater(() -> view.showLoginFail());
+        Platform.runLater(view::showLoginFail);
     }
 }
