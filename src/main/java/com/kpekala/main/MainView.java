@@ -1,5 +1,6 @@
-package org.example.main;
+package com.kpekala.main;
 
+import com.kpekala.data.model.SetModel;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -7,9 +8,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import org.example.data.PreferencesService;
-import org.example.data.RetrofitWebApi;
-import org.example.data.model.SetModel;
+import com.kpekala.data.PreferencesService;
+import com.kpekala.data.RetrofitWebApi;
 
 import java.io.InputStream;
 

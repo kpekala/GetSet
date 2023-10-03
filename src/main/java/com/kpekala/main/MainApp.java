@@ -1,13 +1,13 @@
-package org.example.main;
+package com.kpekala.main;
 
+import com.kpekala.data.PreferencesService;
+import com.kpekala.login.LoginView;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.example.data.PreferencesService;
-import org.example.login.LoginView;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package org.example.data;
+package com.kpekala.data;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

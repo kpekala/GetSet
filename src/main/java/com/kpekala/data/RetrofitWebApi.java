@@ -1,8 +1,8 @@
-package org.example.data;
+package com.kpekala.data;
 
+import com.kpekala.data.model.SetModel;
+import com.kpekala.login.LoginCallback;
 import okhttp3.ResponseBody;
-import org.example.data.model.SetModel;
-import org.example.login.LoginCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -1,8 +1,8 @@
-package org.example.login;
+package com.kpekala.login;
 
 import javafx.application.Platform;
-import org.example.data.PreferencesService;
-import org.example.data.RetrofitWebApi;
+import com.kpekala.data.PreferencesService;
+import com.kpekala.data.RetrofitWebApi;
 
 public class LoginPresenter implements LoginCallback {
     private final LoginView view;

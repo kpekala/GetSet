@@ -1,6 +1,6 @@
-package org.example.data;
+package com.kpekala.data;
 
-import org.example.data.model.SetModel;
+import com.kpekala.data.model.SetModel;
 
 import java.util.Map;
 import java.util.Objects;

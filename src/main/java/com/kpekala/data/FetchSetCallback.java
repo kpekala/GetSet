@@ -1,8 +1,6 @@
-package org.example.data;
+package com.kpekala.data;
 
-import org.example.data.model.SetModel;
-
-import java.util.Map;
+import com.kpekala.data.model.SetModel;
 
 public interface FetchSetCallback {
     void onFetchSuccessful(SetModel setModel);

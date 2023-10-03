@@ -1,13 +1,12 @@
-package org.example.login;
+package com.kpekala.login;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import org.example.data.PreferencesService;
-import org.example.data.RetrofitWebApi;
-import org.example.main.MainApp;
+import com.kpekala.data.PreferencesService;
+import com.kpekala.data.RetrofitWebApi;
+import com.kpekala.main.MainApp;
 
 public class LoginView {
     public Button buttonLoad;

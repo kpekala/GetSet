@@ -1,4 +1,4 @@
-package org.example.login;
+package com.kpekala.login;
 
 public interface LoginCallback {
     void onLoginSuccessful(String hash);

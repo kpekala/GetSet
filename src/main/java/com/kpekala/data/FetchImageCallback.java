@@ -1,4 +1,4 @@
-package org.example.data;
+package com.kpekala.data;
 
 import java.io.InputStream;
 

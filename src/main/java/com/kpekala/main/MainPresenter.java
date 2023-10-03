@@ -1,10 +1,10 @@
-package org.example.main;
+package com.kpekala.main;
 
-import org.example.data.FetchImageCallback;
-import org.example.data.FetchSetCallback;
-import org.example.data.PreferencesService;
-import org.example.data.RetrofitWebApi;
-import org.example.data.model.SetModel;
+import com.kpekala.data.model.SetModel;
+import com.kpekala.data.FetchImageCallback;
+import com.kpekala.data.FetchSetCallback;
+import com.kpekala.data.PreferencesService;
+import com.kpekala.data.RetrofitWebApi;
 
 import java.io.InputStream;
 
