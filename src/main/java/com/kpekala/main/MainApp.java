@@ -1,6 +1,6 @@
 package com.kpekala.main;
 
-import com.kpekala.data.PreferencesService;
+import com.kpekala.data.preferences.PreferencesService;
 import com.kpekala.login.LoginView;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -39,9 +39,7 @@ public class MainApp extends Application {
     }
 
     private void initHandlers() {
-        primaryStage.setOnCloseRequest(event -> {
-            quit();
-        });
+        primaryStage.setOnCloseRequest(event -> quit());
     }
 
     private void prepareScenes() {

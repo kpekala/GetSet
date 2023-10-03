@@ -8,8 +8,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import com.kpekala.data.PreferencesService;
-import com.kpekala.data.RetrofitWebApi;
+import com.kpekala.data.preferences.PreferencesService;
+import com.kpekala.data.rest.BricksetRestClient;
 
 import java.io.InputStream;
 
@@ -23,7 +23,7 @@ public class MainView{
     public Text textPieceCount;
     public ImageView imageSet;
 
-    private final MainPresenter mainPresenter = new MainPresenter(this, new RetrofitWebApi(), new PreferencesService());
+    private final MainPresenter mainPresenter = new MainPresenter(this, new BricksetRestClient(), new PreferencesService());
 
     @FXML
     public void onButtonLoadSetClicked(Event e){

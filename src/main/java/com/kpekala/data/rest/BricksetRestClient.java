@@ -1,5 +1,6 @@
-package com.kpekala.data;
+package com.kpekala.data.rest;
 
+import com.kpekala.data.model.ModelConverter;
 import com.kpekala.data.model.SetModel;
 import com.kpekala.login.LoginCallback;
 import okhttp3.ResponseBody;
@@ -15,12 +16,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-public class RetrofitWebApi {
+public class BricksetRestClient {
     final String BASE_URL = "https://brickset.com/api/v3.asmx/";
     private String apiKey;
     private final BrickSetService brickSetService;
 
-    public RetrofitWebApi() {
+    public BricksetRestClient() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -64,7 +65,7 @@ public class RetrofitWebApi {
 
     public void fetchSetData(String setId, String userHash, FetchSetCallback callback) {
         String params = "{'setNumber': '" + setId + "-1'}";
-        brickSetService.fetchSet1(apiKey, userHash, params).enqueue(new Callback<>() {
+        brickSetService.fetchSet(apiKey, userHash, params).enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<Map<String, Object>> call, Response<Map<String, Object>> response) {
                 Map<String, Object> data = response.body();

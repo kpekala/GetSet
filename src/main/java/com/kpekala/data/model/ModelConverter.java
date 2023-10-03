@@ -1,6 +1,4 @@
-package com.kpekala.data;
-
-import com.kpekala.data.model.SetModel;
+package com.kpekala.data.model;
 
 import java.util.Map;
 import java.util.Objects;

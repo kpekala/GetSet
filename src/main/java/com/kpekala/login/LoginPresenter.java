@@ -1,17 +1,17 @@
 package com.kpekala.login;
 
 import javafx.application.Platform;
-import com.kpekala.data.PreferencesService;
-import com.kpekala.data.RetrofitWebApi;
+import com.kpekala.data.preferences.PreferencesService;
+import com.kpekala.data.rest.BricksetRestClient;
 
 public class LoginPresenter implements LoginCallback {
     private final LoginView view;
-    private final RetrofitWebApi wepApi;
+    private final BricksetRestClient wepApi;
     private final PreferencesService preferences;
 
     private String userName;
 
-    public LoginPresenter(LoginView view, RetrofitWebApi wepApi, PreferencesService preferences) {
+    public LoginPresenter(LoginView view, BricksetRestClient wepApi, PreferencesService preferences) {
         this.view = view;
         this.wepApi = wepApi;
         this.preferences = preferences;

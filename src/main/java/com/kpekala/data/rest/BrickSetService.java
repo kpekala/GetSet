@@ -1,4 +1,4 @@
-package com.kpekala.data;
+package com.kpekala.data.rest;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -17,11 +17,6 @@ public interface BrickSetService {
 
     @GET("getSets")
     Call<Map<String,Object>> fetchSet(@Query("apiKey") String apiKey,
-                                      @Query("userHash") String userHash,
-                                      @Query("params") Map<String, Object> params);
-
-    @GET("getSets")
-    Call<Map<String,Object>> fetchSet1(@Query("apiKey") String apiKey,
                                       @Query("userHash") String userHash,
                                       @Query("params") String params);
 

@@ -1,4 +1,4 @@
-package com.kpekala.data;
+package com.kpekala.data.rest;
 
 import com.kpekala.data.model.SetModel;
 

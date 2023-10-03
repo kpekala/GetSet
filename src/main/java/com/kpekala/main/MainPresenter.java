@@ -1,21 +1,21 @@
 package com.kpekala.main;
 
 import com.kpekala.data.model.SetModel;
-import com.kpekala.data.FetchImageCallback;
-import com.kpekala.data.FetchSetCallback;
-import com.kpekala.data.PreferencesService;
-import com.kpekala.data.RetrofitWebApi;
+import com.kpekala.data.rest.FetchImageCallback;
+import com.kpekala.data.rest.FetchSetCallback;
+import com.kpekala.data.preferences.PreferencesService;
+import com.kpekala.data.rest.BricksetRestClient;
 
 import java.io.InputStream;
 
 public class MainPresenter implements FetchSetCallback, FetchImageCallback {
     private final MainView view;
-    private final RetrofitWebApi webApi;
+    private final BricksetRestClient webApi;
     private final PreferencesService preferences;
 
     private String hash;
 
-    public MainPresenter(MainView view, RetrofitWebApi webApi, PreferencesService preferences) {
+    public MainPresenter(MainView view, BricksetRestClient webApi, PreferencesService preferences) {
         this.view = view;
         this.webApi = webApi;
         this.preferences = preferences;

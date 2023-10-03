@@ -1,4 +1,4 @@
-package com.kpekala.data;
+package com.kpekala.data.preferences;
 
 import java.util.prefs.Preferences;
 

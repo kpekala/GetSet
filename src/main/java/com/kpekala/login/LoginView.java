@@ -4,8 +4,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
-import com.kpekala.data.PreferencesService;
-import com.kpekala.data.RetrofitWebApi;
+import com.kpekala.data.preferences.PreferencesService;
+import com.kpekala.data.rest.BricksetRestClient;
 import com.kpekala.main.MainApp;
 
 public class LoginView {
@@ -14,7 +14,7 @@ public class LoginView {
     public TextField fieldName;
     public PasswordField fieldPassword;
 
-    private final LoginPresenter loginPresenter = new LoginPresenter(this, new RetrofitWebApi(), new PreferencesService());
+    private final LoginPresenter loginPresenter = new LoginPresenter(this, new BricksetRestClient(), new PreferencesService());
 
     public void onLoginButtonClicked() {
         String name = fieldName.getText();

@@ -1,8 +1,8 @@
-package com.kpekala.data;
+package com.kpekala.data.rest;
 
 import java.io.InputStream;
 
 public interface FetchImageCallback {
-    public void onFetchImageSuccessful(InputStream imageByteStream);
+    void onFetchImageSuccessful(InputStream imageByteStream);
     void onFetchImageFailed();
 }
