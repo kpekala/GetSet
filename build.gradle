@@ -7,22 +7,34 @@ repositories {
     mavenCentral()
 }
 
-def integrationTest = sourceSets.create('integrationTest')
+sourceSets {
+    integrationTest {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
 
-configurations[integrationTest.implementationConfigurationName].extendsFrom(configurations.testImplementation)
-configurations[integrationTest.runtimeOnlyConfigurationName].extendsFrom(configurations.testRuntimeOnly)
+configurations {
+    integrationTestImplementation.extendsFrom testImplementation
+    integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
+}
 
 tasks.named('test') {
     useJUnitPlatform()
 }
 
-def integrationTestTask = tasks.register('integrationTest', Test) {
+tasks.register('integrationTest', Test) {
     description = 'Runs integration tests.'
     group = 'verification'
+
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+
     useJUnitPlatform()
 
-    testClassesDirs = integrationTest.output.classesDirs
-    classpath = configurations[integrationTest.runtimeClasspathConfigurationName] + integrationTest.output
+    testLogging {
+        events "passed"
+    }
 }
 
 dependencies {
