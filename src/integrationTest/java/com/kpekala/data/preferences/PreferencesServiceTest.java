@@ -10,8 +10,9 @@ public class PreferencesServiceTest {
     PreferencesService preferencesService;
 
     @BeforeEach
-    public void beforeAll() {
+    public void beforeEach() {
         preferencesService = new PreferencesService();
+        preferencesService.clearPreferences();
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.kpekala.data.preferences;
 
+import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 public class PreferencesService {
@@ -19,5 +20,13 @@ public class PreferencesService {
 
     public String getUserName() {
         return preferences.get("userName","");
+    }
+
+    public void clearPreferences(){
+        try {
+            preferences.clear();
+        } catch (BackingStoreException e) {
+            System.out.println("Error clearing preferences");
+        }
     }
 }
