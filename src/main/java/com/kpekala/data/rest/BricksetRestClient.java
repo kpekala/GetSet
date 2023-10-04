@@ -39,7 +39,6 @@ public class BricksetRestClient {
         try (InputStream resourceStream = loader.getResourceAsStream(resourceName)) {
             props.load(resourceStream);
             apiKey = props.getProperty("apikey");
-            System.out.println(apiKey);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

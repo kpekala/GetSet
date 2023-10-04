@@ -30,7 +30,6 @@ public class MainApp extends Application {
         primaryStage = stage;
         prepareScenes();
         if (!preferences.getUserHash().isEmpty()){
-            System.out.println(preferences.getUserHash());
             startMainScene();
         }else{
             updateScene(loginScene);

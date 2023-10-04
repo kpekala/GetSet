@@ -16,11 +16,6 @@
             <MenuItem fx:id="buttonLogOut" mnemonicParsing="false" onAction="#onButtonLogoutClick" text="Log out" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
       </menus>
     </MenuBar>
       <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -37,18 +32,18 @@
             </VBox>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Text fx:id="textName" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set name" wrappingWidth="200.0">
+                  <Text fx:id="textName" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set name: ..." wrappingWidth="200.0">
                      <font>
                         <Font size="20.0" />
                      </font></Text>
                   <ImageView fx:id="imageSet" fitHeight="150.0" fitWidth="200.0" layoutX="243.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text fx:id="textPieceCount" layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Piece count" wrappingWidth="150.0">
+                  <Text fx:id="textPieceCount" layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Piece count: ..." wrappingWidth="150.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="textYear" layoutX="14.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year" wrappingWidth="150.0" />
-                  <Text fx:id="textTheme" layoutX="14.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Theme" wrappingWidth="150.0" />
+                  <Text fx:id="textYear" layoutX="14.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year: ..." wrappingWidth="150.0" />
+                  <Text fx:id="textTheme" layoutX="14.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Theme: ..." wrappingWidth="150.0" />
                </children>
             </AnchorPane>
          </children>

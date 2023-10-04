@@ -34,13 +34,6 @@ public class MainView{
         mainPresenter.onStart();
     }
 
-    public void showWelcomeDialog(String hash, String name){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Welcome!");
-        alert.setHeaderText("You are logged as " + name);
-        alert.setContentText("Your hash is " + hash + ".");
-        alert.show();
-    }
     public void onButtonQuitClicked(ActionEvent event) {
         mainPresenter.onQuitClicked();
     }
@@ -63,7 +56,6 @@ public class MainView{
         textPieceCount.setText("Pieces: " + setModel.pieceCount());
         textTheme.setText("Theme: " + setModel.theme());
         textYear.setText("Year: " + setModel.year());
-        System.out.println(setModel.imageLink());
     }
 
     public void showSetImage(InputStream imageByteStream) {

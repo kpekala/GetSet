@@ -23,8 +23,6 @@ public class MainPresenter implements FetchSetCallback, FetchImageCallback {
 
     public void onStart(){
         hash = preferences.getUserHash();
-        String name = preferences.getUserName();
-        view.showWelcomeDialog(hash, name);
     }
 
     public void onQuitClicked() {
@@ -32,8 +30,7 @@ public class MainPresenter implements FetchSetCallback, FetchImageCallback {
     }
 
     public void onLogoutClicked() {
-        preferences.updateUserHash("");
-        preferences.updateUserName("");
+        preferences.clearPreferences();
         MainApp.getInstance().startLoginScene();
     }
     public void onFetchSetClicked(String id) {
